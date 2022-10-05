@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <section class="w-full">
+        <div id="main" class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+
+            <div class="bg-gray-800 pt-3">
+                <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <h1 class="font-bold pl-2">Dodaj Nowe Doświadczenie</h1>
+                </div>
+            </div>
+            <div class="flex flex-row flex-wrap flex-grow mt-2">
+                <div class="w-full">
+                    <!--Table Card-->
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
+                        {% csrf_token %}
+                 <div class="mb-4">
+                        <label for="">Czas Pracy(eg. 2022-present)</label>
+                            {% render_field form.work_date class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+
+                         <div class="mb-4">
+                        <label for="">Nazwa Firmy</label>
+                            {% render_field form.company_name class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+
+                         <div class="mb-4">
+                        <label for="">Opis Projektu</label>
+                            {% render_field form.desc class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+  <div class="mb-4">
+                        <label for="">Typ of</label>
+                            {% render_field form.type_of class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+
+                      <div class="mb-4">
+                        <label for="">Czas trwania projektu</label>
+                            {% render_field form.duration class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+ <div class="mb-4">
+                        <label for="">Rola Programisty w projekcie</label>
+                            {% render_field form.role class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+
+                   <div class="mb-4">
+                        <label for="">Technologia Projektu</label>
+                            {% render_field form.technology class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"  %}
+                        </div>
+
+                        
+
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    type="submit">
+                                Dodaj Nowy ➕
+                            </button>
+                            <a href="/"
+                               class="bg-blue-800 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+
+                                Powrót 🏠
+                            </a>
+                        </div>
+                    </form>
+                    <!--/table Card-->
+                </div>
+            </div>
+           
+
+
+        </div>
+    </section>
+{% endblock %}

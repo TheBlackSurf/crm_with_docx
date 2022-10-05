@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Generator CV
+    </title>
+    <style>
+        /* Make sure that padding behaves as expected */
+        * {
+            box-sizing: border-box
+        }
+
+        /* Container for skill bars */
+        .container {
+            width: 100%; /* Full width */
+            background-color: #ddd; /* Grey background */
+        }
+
+        .skills {
+            text-align: right; /* Right-align text */
+            padding-top: 10px; /* Add top padding */
+            padding-bottom: 10px; /* Add bottom padding */
+            color: white; /* White text color */
+        }
+
+        .html {
+            width: 90%;
+            background-color: #04AA6D;
+        }
+
+        /* Green */
+        .css {
+            width: 80%;
+            background-color: #2196F3;
+        }
+
+        /* Blue */
+        .js {
+            width: 65%;
+            background-color: #f44336;
+        }
+
+        /* Red */
+        .php {
+            width: 60%;
+            background-color: #808080;
+        }
+
+        /* Dark Grey */
+        body {
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.3rem;
+            margin: 0;
+            padding-top: 10mm;
+            padding-bottom: 10mm;
+            padding-left: 10mm;
+            padding-right: 10mm;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style-type: none;
+        }
+
+        a {
+            color: #1e89ed;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+
+        .name {
+            font-size: 1.4rem;
+            margin-bottom: 1mm;
+
+        }
+
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 20px;">
+
+<table class="header full-width" style="margin-top: -43px;">
+    <tr>
+        <td class="">
+            <ul>
+                <li class="name">{{form.firstname}} {{form.surname}}</li>
+                <li class="address"><h2>{{form.programmer_title}}</h2></li>
+                <li class="email"><h3>Location {{form.address}}</h3></li>
+
+            </ul>
+        </td>
+        <td class="">
+            <ul>
+
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+<div class="body">
+    <h1 style=" font-weight: normal; color: #4599E8; margin-top: -1px;">Summary</h1>
+    <p><span>{{form.summary}}</span>
+    </p>
+    <hr>
+    <h1 style="margin-top: 15px; font-weight: normal; color: #4599E8;">Key areas</h1>
+    {% for f in form.areas.all  %}
+    <p><b>{{f.title}}</b> <br> {{f.desc}}</p>
+    {% endfor %}
+    <hr>
+    {% if form.experiences.all %}
+        <h1 style="margin-top: 20px; font-weight: normal; color: #4599E8;">Experience</h1>
+    {% endif %}
+
+    {% for e in form.experiences.all  %}
+
+    <div class="experience">
+        <table class=" full-width">
+            <tr>
+                <td class="" style="width: 20%; vertical-align: text-top;">
+                    <ul style="vertical-align: text-top;">
+                        {% if e.work_date %}
+                        <li class="name"><p style="font-size: 14px; margin-right: 10px; margin-top: -6px;  position:relative;"><b>{{e.work_date}}</b></p></li>
+                        {% endif %}
+                    </ul>
+                </td>
+
+                <td style="text-align: left;  border-left: 1px solid gray; padding-left: 10px;">
+                    <ul>
+
+                        {% if e.company_name %}
+                        <li class="linkedin" style="margin-left: 10px; margin-bottom: 10px; "><b style="font-size: 16px; color: #459FEF;">{{e.company_name}}</b>
+                        </li>
+                        {% endif %}
+                        {% if e.desc %}
+                        
+                        <li class="linkedin" style="margin-left: 10px;"><b>Project description</b>: {{e.desc}}
+                        </li>
+                        {% endif %}
+                        {% if e.type_of %}
+
+                        <li class="linkedin" style="margin-left: 10px;"><b>Type of business:</b> {{e.type_of}}</li>
+                        {% endif %}
+                        {% if e.duration %}
+                        
+                        <li class="website" style="margin-left: 10px;"><b>Project duration:</b> {{e.duration}}</li>
+                        {% endif %}
+                        {% if e.role %}
+
+                        <li class="website" style="margin-left: 10px;"><b>Role in project:</b> {{e.role}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if e.technology %}
+
+                        <li class="website" style="margin-left: 10px;"><b>Technologies:</b> {{e.technology}}</li>
+                        {% endif %}
+
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr>
+
+    </div>
+    {% endfor %}
+
+
+
+    </div>
+
+
+
+
+</body>
+</html>
